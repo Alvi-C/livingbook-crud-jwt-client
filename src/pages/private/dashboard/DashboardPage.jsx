@@ -1,8 +1,11 @@
+import { Outlet } from "react-router-dom";
+import DashboardNav from "./components/DashboardNav";
 
 const DashboardPage = () => {
     return (
-        <div>
-            <h2>Admin Dashboard</h2>
+        <div className="container-size min-h-screen">
+            <DashboardNav />
+            <Outlet/>
         </div>
     );
 };

@@ -1,7 +1,4 @@
 
-
-
-
 const TopBanner = () => {
     return (
 			<div className='bg-hero-img-2 bg-fixed border-b border-black'>

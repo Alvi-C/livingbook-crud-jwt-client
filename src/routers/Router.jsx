@@ -9,6 +9,10 @@ import MyBookingPage from '../pages/private/myBookings/MyBookingPage';
 import DashboardPage from '../pages/private/dashboard/DashboardPage';
 import LoginPage from '../pages/public/login/LoginPage';
 import SignupPage from '../pages/public/signup/SignupPage';
+import AddProperty from '../pages/private/dashboard/components/AddProperty';
+import AllProperty from '../pages/private/dashboard/components/AllProperty';
+import AllBookings from '../pages/private/dashboard/components/AllBookings';
+import AllUsers from '../pages/private/dashboard/components/AllUsers';
 
 
 const Router = createBrowserRouter([
@@ -35,7 +39,27 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <DashboardPage/>
+                element: <DashboardPage />,
+                errorElement: <Error />,
+                children: [
+                    {
+                        path: '/dashboard/addProperty',
+                        element: <AddProperty/>
+                    },
+                    {
+                        path: '/dashboard/allProperty',
+                        element: <AllProperty/>
+                    },
+                    {
+                        path: '/dashboard/allBookings',
+                        element: <AllBookings/>
+                    },
+                    {
+                        path: '/dashboard/allUsers',
+                        element: <AllUsers/>
+                    }
+                ]
+
             },
             {
                 path: '/login',
