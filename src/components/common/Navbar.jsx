@@ -133,8 +133,8 @@ const Navbar = () => {
 
 					<Link
 						to='/login'
-						className={`bg-black text-white rounded-2xl p-2 px-3 text-xs md:text-sm font-medium ${
-							activeScroll ? 'bg-white text-black' : 'bg-lime-500'
+						className={`rounded-2xl p-2 px-3 text-xs md:text-sm font-medium ${
+							activeScroll ? 'bg-white text-black' : 'bg-lime-500 text-white'
 						}`}
 					>
 						Login
