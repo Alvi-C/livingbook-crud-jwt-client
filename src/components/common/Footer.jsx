@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-        <div>
+        <div className="container-size">
             <h2>Footer</h2>
         </div>
     );
