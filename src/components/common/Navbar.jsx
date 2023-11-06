@@ -75,6 +75,16 @@ const Navbar = () => {
 									My Bookings
 								</NavLink>
 							</li>
+							<li>
+								<NavLink
+									to='/dashboard'
+									className={({ isActive }) =>
+										isActive ? 'text-lime-500' : ''
+									}
+								>
+									Dashboard
+								</NavLink>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -126,6 +136,16 @@ const Navbar = () => {
 									}
 								>
 									My Bookings
+								</NavLink>
+							</li>
+							<li className='border-b border-lime-500 py-3'>
+								<NavLink
+									to='/dashboard'
+									className={({ isActive }) =>
+										isActive ? 'text-lime-500' : ''
+									}
+								>
+									Dashboard
 								</NavLink>
 							</li>
 						</ul>
