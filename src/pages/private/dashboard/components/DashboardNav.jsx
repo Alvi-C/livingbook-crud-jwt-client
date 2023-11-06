@@ -21,7 +21,7 @@ const DashboardNav = () => {
 								to='/dashboard/allProperty'
 								className={({ isActive }) => (isActive ? 'text-lime-500' : '')}
 							>
-								All Property
+								All Properties
 							</NavLink>
 						</li>
 						<li>
