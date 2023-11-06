@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+	@apply m-0 p-0 box-border;
+}
+
+body {
+	@apply font-texts;
+}
+
+.container-size {
+	@apply w-[95%] md:w-[90%] mx-auto;
+}

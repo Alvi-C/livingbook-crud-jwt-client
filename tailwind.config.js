@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        title: `gt-super, Georgia, Cambria, Times New Roman, Times, serif`,
+        texts: `sohne, "Helvetica Neue", Helvetica, Arial, sans-serif`,
+      }
+    },
   },
   plugins: [],
 }
