@@ -28,22 +28,40 @@ const Navbar = () => {
 	return (
 		<nav
 			className={`border-b border-slate-500 sticky top-0 z-50 ${
-				activeScroll ? 'bg-slate-100' : 'bg-inherit'
+				activeScroll ? 'bg-blue-500' : 'bg-inherit'
 			} transition-all duration-500`}
 		>
 			<div className='container-size h-[70px] flex items-center justify-between'>
 				<div className='flex items-center justify-start gap-10'>
 					<Link to='/' className='flex items-center gap-1 md:gap-2'>
-						<MdCardTravel className='text-3xl md:text-4xl fill-rose-500' />
-						<p className='text-xl md:text-3xl font-bold'>LivingBook</p>
+						<MdCardTravel
+							className={`text-3xl md:text-4xl transition-all duration-500 ${
+								activeScroll ? 'fill-white' : 'fill-blue-500'
+							}`}
+						/>
+						<p className={`text-xl md:text-3xl font-bold ${activeScroll? 'text-white': 'text-black'}`}>LivingBook</p>
 					</Link>
 					<div className='hidden md:flex items-center gap-5'>
-						<ul className='text-sm font-semibold sm:flex items-center gap-5'>
+						<ul className={`text-sm font-semibold sm:flex items-center gap-5 ${activeScroll ? 'text-white' : 'text-black'}`}>
 							<li>
-								<NavLink to='/rooms' className={({ isActive }) => isActive ? 'text-rose-500' : ''} >Rooms</NavLink>
+								<NavLink
+									to='/rooms'
+									className={({ isActive }) =>
+										isActive ? `${activeScroll ? 'text-white' : 'text-blue-500'}` : ``
+									}
+								>
+									Rooms
+								</NavLink>
 							</li>
 							<li>
-								<NavLink to='/mybookings' className={({ isActive }) => isActive ? 'text-rose-500' : ''}>My Bookings</NavLink>
+								<NavLink
+									to='/mybookings'
+									className={({ isActive }) =>
+										isActive ? 'text-blue-500' : ''
+									}
+								>
+									My Bookings
+								</NavLink>
 							</li>
 						</ul>
 					</div>
@@ -69,21 +87,42 @@ const Navbar = () => {
 					>
 						<ul className='space-y-4'>
 							<li className='border-b border-gray-300 py-3'>
-								<NavLink to='/' className={({ isActive }) => isActive ? 'text-rose-500' : ''} >Home</NavLink>
+								<NavLink
+									to='/'
+									className={({ isActive }) =>
+										isActive ? 'text-blue-500' : ''
+									}
+								>
+									Home
+								</NavLink>
 							</li>
 							<li className='border-b border-gray-200 py-3'>
-								<NavLink to='/rooms' className={({ isActive }) => isActive ? 'text-rose-500' : ''}>Rooms</NavLink>
+								<NavLink
+									to='/rooms'
+									className={({ isActive }) =>
+										isActive ? 'text-blue-500' : ''
+									}
+								>
+									Rooms
+								</NavLink>
 							</li>
 							<li className='border-b border-gray-200 py-3'>
-								<NavLink to='/mybookings' className={({ isActive }) => isActive ? 'text-rose-500' : ''}>My Bookings</NavLink>
+								<NavLink
+									to='/mybookings'
+									className={({ isActive }) =>
+										isActive ? 'text-blue-500' : ''
+									}
+								>
+									My Bookings
+								</NavLink>
 							</li>
 						</ul>
 					</div>
 
-                    <Link
-                        to='/login'
+					<Link
+						to='/login'
 						className={`bg-black text-white rounded-2xl p-2 px-3 text-xs md:text-sm font-medium ${
-							activeScroll ? 'bg-rose-500' : 'bg-black'
+							activeScroll ? 'bg-white text-black' : 'bg-blue-500'
 						}`}
 					>
 						Login
