@@ -1,19 +1,29 @@
-
-
 import { Link, NavLink } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import {MdCardTravel} from 'react-icons/md'
+import { useContext, useEffect, useState } from 'react'
+import { MdCardTravel } from 'react-icons/md'
 import { RiMenu3Line } from 'react-icons/ri'
-import {MdOutlineClose} from 'react-icons/md'
+import { MdOutlineClose } from 'react-icons/md'
+import { AuthContext } from '../../provider/AuthProvider'
 
 const Navbar = () => {
-    const [activeScroll, setActiveScroll] = useState(false)
-    const [mobileMenu, setMobileMenu] = useState(false)
+	const [activeScroll, setActiveScroll] = useState(false)
+	const [mobileMenu, setMobileMenu] = useState(false)
 
-    const handleMobileMenuToggle = () => {
-        setMobileMenu(!mobileMenu)
-    }
+	const { user, logOutUser } = useContext(AuthContext)
 
+	const handleMobileMenuToggle = () => {
+		setMobileMenu(!mobileMenu)
+	}
+
+	const handleLogout = () => {
+		logOutUser()
+			.then(result => {
+				console.log(result)
+			})
+			.catch(error => {
+				console.log(error)
+			})
+	}
 
 	useEffect(() => {
 		const scrollMe = () => {
@@ -151,14 +161,25 @@ const Navbar = () => {
 						</ul>
 					</div>
 
-					<Link
-						to='/login'
-						className={`rounded-2xl p-2 px-3 text-xs md:text-sm font-medium ${
-							activeScroll ? 'bg-white text-black' : 'bg-lime-500 text-white'
-						}`}
-					>
-						Login
-					</Link>
+					{user ? (
+						<button
+							onClick={handleLogout}
+							className={`rounded-2xl p-2 px-3 text-xs md:text-sm font-medium ${
+								activeScroll ? 'bg-white text-black' : 'bg-lime-500 text-white'
+							}`}
+						>
+							Logout
+						</button>
+					) : (
+						<Link
+							to='/login'
+							className={`rounded-2xl p-2 px-3 text-xs md:text-sm font-medium ${
+								activeScroll ? 'bg-white text-black' : 'bg-lime-500 text-white'
+							}`}
+						>
+							Login
+						</Link>
+					)}
 				</div>
 			</div>
 		</nav>

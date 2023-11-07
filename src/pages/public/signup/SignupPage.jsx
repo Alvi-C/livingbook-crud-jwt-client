@@ -1,8 +1,58 @@
 
-import { Link } from 'react-router-dom'
-
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
+import { Toaster, toast } from 'sonner'
+import { AuthContext } from '../../../provider/AuthProvider';
+import axios from 'axios'
 
 const SignupPage = () => {
+
+	const { createUser } = useContext(AuthContext)
+	const navigate = useNavigate()
+
+	const handleCreateAccount = event => {
+		event.preventDefault()
+		const form = event.target
+		const name = form.name.value
+		const email = form.email.value
+		const password = form.password.value
+
+		// console.log(name, email, password);
+
+		// validation
+		if (password.length < 6) {
+			toast.error('Password must be at least 6 characters long')
+			return
+		} else if (!/[A-Z]/.test(password)) {
+			toast.error('Password must contain at least one uppercase letter')
+			return
+		} else if (!/[^a-zA-Z0-9]/.test(password)) {
+			toast.error('Password must contain at least one special character')
+			return
+		}
+
+		createUser(email, password)
+			.then(result => {
+				console.log('user', result.user.email);
+				const userData = {
+					name,
+					email
+				}
+
+				axios.post('http://localhost:3000/users', userData)
+					.then(response => {
+						if (response.data.insertedId) {
+							toast.success('Account created successfully')
+							form.reset()
+							navigate('/')
+						}
+					})
+			})
+			.catch(error => {
+				toast.error(error.message)
+			})
+	}
+
     return (
 			<div className='container-size'>
 				<div className='grid grid-cols-1 lg:grid-cols-2 mt-10'>
@@ -21,13 +71,10 @@ const SignupPage = () => {
 								</Link>
 							</p>
 
-							<form>
+							<form onSubmit={handleCreateAccount}>
 								<div className='space-y-5 mt-5'>
 									<div>
-										<label
-											htmlFor=''
-											className='text-base font-medium text-gray-900'
-										>
+										<label className='text-base font-medium text-gray-900'>
 											{' '}
 											Name{' '}
 										</label>
@@ -41,10 +88,7 @@ const SignupPage = () => {
 										</div>
 									</div>
 									<div>
-										<label
-											htmlFor=''
-											className='text-base font-medium text-gray-900'
-										>
+										<label className='text-base font-medium text-gray-900'>
 											{' '}
 											Email address{' '}
 										</label>
@@ -60,7 +104,6 @@ const SignupPage = () => {
 									<div>
 										<div className='flex items-center justify-between'>
 											<label
-												htmlFor=''
 												className='text-base font-medium text-gray-900'
 											>
 												{' '}
@@ -81,10 +124,10 @@ const SignupPage = () => {
 										</div>
 									</div>
 								</div>
-								<div className='flex justify-center mt-7'>
+								<div className='flex justify-center mt-7 text-white tracking-wide'>
 									<input
-										type='button'
-										value='Login'
+										type='submit'
+										value='Create Account'
 										className='bg-lime-500 w-full rounded-xl py-3 px-3 text-xs md:text-sm font-medium'
 									/>
 								</div>
@@ -94,11 +137,12 @@ const SignupPage = () => {
 					<div className='h-full w-full'>
 						<img
 							className='mx-auto h-full w-full rounded-md object-cover'
-							src='https://www.libertytravel.com/sites/default/files/styles/full_size/public/luxury-hero%20%281%29.jpg?itok=eHbThPZQ'
+							src='https://images.trvl-media.com/lodging/35000000/34450000/34448300/34448277/e670d8fa.jpg?impolicy=resizecrop&rw=1200&ra=fit'
 							alt=''
 						/>
 					</div>
 				</div>
+				<Toaster position='top-center' richColors />
 			</div>
 		)
 };
