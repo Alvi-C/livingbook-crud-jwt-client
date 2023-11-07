@@ -66,12 +66,12 @@ const RoomDetails = () => {
 							))}
 						</ul>
 					</div>
-					<div className='w-1/2 px-2 mt-7 space-x-4 text-sm'>
-						<button className='w-[40%] bg-lime-600 text-white tracking-wide py-2 px-4 rounded-lg font-normal hover:bg-lime-700'>
+					<div className='px-2 mt-7 flex space-x-4 text-sm'>
+						<button className=' bg-lime-600 text-white tracking-wide py-2 px-4 rounded-lg font-normal hover:bg-lime-700'>
 							Reserve
 						</button>
 						<Link to='/rooms'>
-							<button className='w-[40%] bg-lime-600 text-white tracking-wide py-2 px-4 rounded-lg font-normal hover:bg-lime-700'>
+							<button className=' bg-lime-600 text-white tracking-wide py-2 px-4 rounded-lg font-normal hover:bg-lime-700'>
 								Go back
 							</button>
 						</Link>
