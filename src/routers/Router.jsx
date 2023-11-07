@@ -16,69 +16,71 @@ import AllUsers from '../pages/private/dashboard/components/AllUsers';
 import axios from 'axios'
 
 const Router = createBrowserRouter([
-    {
-        path: '/',
-        element: <MainLayout />,
-        errorElement: <Error />,
-        children: [
-            {
-                path: '/',
-                element: <HomePage/>
-            },
-            {
-                path: '/rooms',
-                element: <AllRoomsPage />,
-                loader: async () => {
-                    const response = await axios.get('http://localhost:3000/properties')
-                    return response.data
-                }
-            },
-            {
-                path: '/rooms/details/:id',
-                element: <RoomDetails />,
-
-            },
-            {
-                path: '/mybookings',
-                element: <MyBookingPage/>
-            },
-            {
-                path: '/dashboard',
-                element: <DashboardPage />,
-                children: [
-                    {
-                        path: '/dashboard/addProperty',
-                        element: <AddProperty/>
-                    },
-                    {
-                        path: '/dashboard/allProperty',
-                        element: <AllProperty/>
-                    },
-                    {
-                        path: '/dashboard/allBookings',
-                        element: <AllBookings/>
-                    },
-                    {
-                        path: '/dashboard/allUsers',
-                        element: <AllUsers/>
-                    },
-                    {
-                        path: '*',
-                        element: <Error/>
-                    }
-                ]
-
-            },
-            {
-                path: '/login',
-                element: <LoginPage/>
-            },
-            {
-                path: '/signup',
-                element: <SignupPage/>
-            }
-        ]
-    }
+	{
+		path: '/',
+		element: <MainLayout />,
+		errorElement: <Error />,
+		children: [
+			{
+				path: '/',
+				element: <HomePage />,
+			},
+			{
+				path: '/rooms',
+				element: <AllRoomsPage />,
+				loader: async () => {
+					const response = await axios.get('http://localhost:3000/properties')
+					return response.data
+				},
+			},
+			{
+				path: '/rooms/details/:id',
+				element: <RoomDetails />,
+				loader: async ({ params }) => {
+					const response = await axios.get(`http://localhost:3000/properties/${params.id}`)
+					return response.data
+				},
+			},
+			{
+				path: '/mybookings',
+				element: <MyBookingPage />,
+			},
+			{
+				path: '/dashboard',
+				element: <DashboardPage />,
+				children: [
+					{
+						path: '/dashboard/addProperty',
+						element: <AddProperty />,
+					},
+					{
+						path: '/dashboard/allProperty',
+						element: <AllProperty />,
+					},
+					{
+						path: '/dashboard/allBookings',
+						element: <AllBookings />,
+					},
+					{
+						path: '/dashboard/allUsers',
+						element: <AllUsers />,
+					},
+					{
+						path: '*',
+						element: <Error />,
+					},
+				],
+			},
+			{
+				path: '/login',
+				element: <LoginPage />,
+			},
+			{
+				path: '/signup',
+				element: <SignupPage />,
+			},
+		],
+	},
 ])
 
 

@@ -13,7 +13,7 @@ const RoomsCard = ({ property }) => {
 						src={image}
 						alt='Image'
 					/>
-					<h3 className='absolute bottom-4 bg-black px-3 py-1 text-sm text-lime-300'>
+					<h3 className='absolute bottom-4 bg-black px-3 py-1 text-sm tracking-wide text-lime-300'>
 						{propertyType}
 					</h3>
 				</div>
@@ -26,7 +26,7 @@ const RoomsCard = ({ property }) => {
 						Price per day: <span className='font-bold'>${price}</span>
 					</h3>
 					<Link
-						className='mt-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-lg border border-transparent tracking-wide text-slate-600 hover:text-green-600 disabled:opacity-50 disabled:pointer-events-none '
+						className='mt-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-lg border border-transparent tracking-wide text-slate-600 hover:text-lime-600 disabled:opacity-50 disabled:pointer-events-none '
 						to={`/rooms/details/${_id}`}
 					>
 						View details
