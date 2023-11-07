@@ -13,7 +13,7 @@ import AddProperty from '../pages/private/dashboard/components/AddProperty';
 import AllProperty from '../pages/private/dashboard/components/AllProperty';
 import AllBookings from '../pages/private/dashboard/components/AllBookings';
 import AllUsers from '../pages/private/dashboard/components/AllUsers';
-
+import axios from 'axios'
 
 const Router = createBrowserRouter([
     {
@@ -27,11 +27,16 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/rooms',
-                element:<AllRoomsPage/>
+                element: <AllRoomsPage />,
+                loader: async () => {
+                    const response = await axios.get('http://localhost:3000/properties')
+                    return response.data
+                }
             },
             {
                 path: '/rooms/details/:id',
-                element: <RoomDetails/>
+                element: <RoomDetails />,
+
             },
             {
                 path: '/mybookings',

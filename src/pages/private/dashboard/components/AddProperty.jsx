@@ -7,7 +7,6 @@ const AddProperty = () => {
 	const [selectedCountry, setSelectedCountry] = useState('')
 	const [selectedCity, setSelectedCity] = useState('')
 	const [cities, setCities] = useState([])
-	// const [errorMsg, setErrorMsg] = useState('')
 
 	const allAmenities = [
 		'Free parking',
@@ -271,7 +270,7 @@ const AddProperty = () => {
 					<div className='w-full md:w-2/3 lg:w-1/3'>
 						<input
 							type='submit'
-							value=' Add Property'
+							value='+ Add New Property'
 							className='bg-lime-600 text-white text-sm py-2 px-3 rounded-lg'
 						/>
 					</div>
