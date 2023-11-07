@@ -6,7 +6,8 @@ const AddProperty = () => {
 	const [amenities, setAmenities] = useState([])
 	const [selectedCountry, setSelectedCountry] = useState('')
 	const [selectedCity, setSelectedCity] = useState('')
-    const [cities, setCities] = useState([])
+	const [cities, setCities] = useState([])
+	// const [errorMsg, setErrorMsg] = useState('')
 
 	const allAmenities = [
 		'Free parking',
@@ -16,13 +17,13 @@ const AddProperty = () => {
 		'24-hour front desk',
 		'Room service',
 		'Breakfast',
-		'Air conditioning',
+		'Air conditioning'
 	]
 
 	const countries = {
-		India: ['Kashmir', 'Kolkata', 'Darjiling'],
+		India: ['Mumbai', 'Kolkata', 'Darjiling'],
 		Nepal: ['Kathmandu', 'Pokhara', 'Lalitpur'],
-		Bangladesh: ['Sylhet', 'Khulna', 'Cox-bazar'],
+		Bangladesh: ['Sylhet', 'Dhaka', 'Cox-bazar'],
 		Vietnam: ['Ho Chi Minh', 'Hanoi', 'Da Nang'],
 		Maldives: ['Male', 'Maafushi', 'Hulhumale'],
 		Thailand: ['Pattaya', 'Phuket', 'Chiang Mai'],
@@ -75,6 +76,21 @@ const AddProperty = () => {
 			price,
 			amenity,
 			details,
+		}
+
+		if (
+			!propertyName ||
+			!image ||
+			!country ||
+			!city ||
+			!propertyType ||
+			!totalRoom ||
+			!price ||
+			!amenity ||
+			!details
+		){
+			toast.error('Please fill all the fields')
+			return
 		}
 
 		axios
