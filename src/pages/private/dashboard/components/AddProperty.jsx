@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import axios from 'axios'
+import { Toaster, toast } from 'sonner'
 
 const AddProperty = () => {
 	const [amenities, setAmenities] = useState([])
@@ -41,7 +43,6 @@ const AddProperty = () => {
 		const country = event.target.value
 		setSelectedCountry(country)
 		setCities(countries[country] || [])
-		setSelectedCity('') // Reset city selection when country changes
 	}
 
 	const handleCityChange = event => {
@@ -49,20 +50,68 @@ const AddProperty = () => {
 		setSelectedCity(event.target.value)
 	}
 
+
+	const handleAddProperty = event => {
+		event.preventDefault()
+
+		const form = event.target
+		const propertyName = form.name.value
+		const image = form.imageUrl.value
+		const country = form.country.value
+		const city = form.city.value
+		const propertyType = form.propertyType.value
+		const totalRoom = form.totalRooms.value
+		const price = form.price.value
+		const amenity = amenities
+		const details = form.details.value
+
+		const propertyData = {
+			propertyName,
+			image,
+			country,
+			city,
+			propertyType,
+			totalRoom,
+			price,
+			amenity,
+			details,
+		}
+
+		axios
+			.post('http://localhost:3000/properties', propertyData)
+			.then(response => {
+				const data = response.data
+				if (data.insertedId) {
+					toast.success('Product added successfully')
+					form.reset()
+					setAmenities([])
+					setSelectedCountry('')
+					setSelectedCity('')
+					setCities([])
+				}
+			})
+			.catch(error => {
+				console.error(error)
+			})
+	}
+
 	return (
 		<div className='grid grid-rows-1 lg:grid-cols-12 gap-1'>
 			<div className='col-span-6 lg:col-span-1'>{/* <h2>Hello</h2> */}</div>
 			<div className='col-span-6 lg:col-span-11 px-2 md:px-0'>
 				<h2 className='text-xl font-medium mb-7'>Add Property</h2>
-				<form className='flex flex-col space-y-3 mb-10'>
+				<form
+					onSubmit={handleAddProperty}
+					className='flex flex-col space-y-3 mb-10'
+				>
 					<div className='w-full md:w-2/3 lg:w-1/3'>
 						<label className='block text-base font-medium text-gray-700'>
 							Name
 						</label>
 
 						<input
-							type='text'
 							name='name'
+							type='text'
 							placeholder="Property's name"
 							className='mt-2 py-2 px-3 w-full rounded-md border border-gray-200 sm:text-sm ring-0 focus:outline-none focus:ring-0 focus:border-gray-400 placeholder:text-xs'
 						/>
@@ -73,13 +122,13 @@ const AddProperty = () => {
 						</label>
 
 						<input
-							type='text'
 							name='imageUrl'
+							type='text'
 							placeholder="Property's image url"
 							className='mt-2 py-2 px-3 w-full rounded-md border border-gray-200 sm:text-sm ring-0 focus:outline-none focus:ring-0 focus:border-gray-400 placeholder:text-xs'
 						/>
 					</div>
-					{/* Country and city select */}
+					{/* -------- Country and city select--------- */}
 					<div className='w-full md:w-2/3 lg:w-1/3'>
 						<label className='block text-base font-medium text-gray-700'>
 							Country
@@ -118,31 +167,7 @@ const AddProperty = () => {
 						</select>
 					</div>
 
-					{/* <div className='w-full md:w-2/3 lg:w-1/3'>
-						<label className='block text-base font-medium text-gray-700'>
-							Country
-						</label>
-
-						<input
-							type='text'
-							name='country'
-							placeholder="Property's city"
-							className='mt-2 py-2 px-3 w-full rounded-md border border-gray-200 sm:text-sm ring-0 focus:outline-none focus:ring-0 focus:border-gray-400 placeholder:text-xs'
-						/>
-					</div>
-					<div className='w-full md:w-2/3 lg:w-1/3'>
-						<label className='block text-base font-medium text-gray-700'>
-							City
-						</label>
-
-						<input
-							type='text'
-							name='city'
-							placeholder="Property's city"
-							className='mt-2 py-2 px-3 w-full rounded-md border border-gray-200 sm:text-sm ring-0 focus:outline-none focus:ring-0 focus:border-gray-400 placeholder:text-xs'
-						/>
-					</div> */}
-					{/* Property type dropdown */}
+					{/* --------- Property type dropdown --------- */}
 					<div className='w-full md:w-2/3 lg:w-1/3'>
 						<label
 							htmlFor='HeadlineAct'
@@ -152,7 +177,7 @@ const AddProperty = () => {
 						</label>
 
 						<select
-							name='type'
+							name='propertyType'
 							className='mt-2 py-2.5 px-3 w-full rounded-md border border-gray-200 sm:text-sm ring-0 focus:outline-none focus:ring-0'
 						>
 							<option value=''>Please select</option>
@@ -169,8 +194,8 @@ const AddProperty = () => {
 						</label>
 
 						<input
-							type='number'
 							name='totalRooms'
+							type='number'
 							placeholder="Property's total number of room"
 							className='mt-2 py-2 px-3 w-full rounded-md border border-gray-200 sm:text-sm ring-0 focus:outline-none focus:ring-0 focus:border-gray-400 placeholder:text-xs'
 						/>
@@ -181,13 +206,13 @@ const AddProperty = () => {
 						</label>
 
 						<input
-							type='number'
 							name='price'
+							type='number'
 							placeholder="Property's price per day"
 							className='mt-2 py-2 px-3 w-full rounded-md border border-gray-200 sm:text-sm ring-0 focus:outline-none focus:ring-0 focus:border-gray-400 placeholder:text-xs'
 						/>
 					</div>
-					{/* amenities checkbox */}
+					{/*--------- amenities checkbox ---------*/}
 					<div className='w-full md:w-2/3 lg:w-1/3'>
 						<label className='block text-base font-medium text-gray-700'>
 							Amenities
@@ -200,6 +225,7 @@ const AddProperty = () => {
 								<label key={amenity}>
 									<div className='flex items-center gap-2'>
 										<input
+											name={amenity}
 											type='checkbox'
 											value={amenity}
 											checked={amenities.includes(amenity)}
@@ -211,7 +237,7 @@ const AddProperty = () => {
 							))}
 						</div>
 					</div>
-					{/* details textarea */}
+					{/* --------- details textarea --------- */}
 					<div className='w-full md:w-2/3 lg:w-1/3'>
 						<label className='block text-base font-medium text-gray-700'>
 							Details
@@ -235,6 +261,7 @@ const AddProperty = () => {
 					</div>
 				</form>
 			</div>
+			<Toaster position='top-right' richColors />
 		</div>
 	)
 }
