@@ -18,18 +18,12 @@ const AddProperty = () => {
 	]
 
 	const countries = {
-		India: ['Mumbai', 'Delhi', 'Bangalore'],
+		India: ['Kashmir', 'Kolkata', 'Darjiling'],
 		Nepal: ['Kathmandu', 'Pokhara', 'Lalitpur'],
-		Bangladesh: ['Dhaka', 'Chittagong', 'Cox-bazar'],
-		Russia: ['Moscow', 'Saint Petersburg', 'Novosibirsk'],
-		Ireland: ['Dublin', 'Cork', 'Galway'],
-		Iceland: ['Reykjavik', 'Akureyri', 'Húsavík'],
-		Greece: ['Athens', 'Thessaloniki', 'Patras'],
-		Turkey: ['Istanbul', 'Ankara', 'Izmir'],
-		Australia: ['Sydney', 'Melbourne', 'Brisbane'],
-		Portugal: ['Lisbon', 'Porto', 'Braga'],
-		Norway: ['Oslo', 'Bergen', 'Trondheim'],
-		Canada: ['Toronto', 'Vancouver', 'Montreal'],
+		Bangladesh: ['Sylhet', 'Khulna', 'Cox-bazar'],
+		Vietnam: ['Ho Chi Minh', 'Hanoi', 'Da Nang'],
+		Maldives: ['Male', 'Maafushi', 'Hulhumale'],
+		Thailand: ['Pattaya', 'Phuket', 'Chiang Mai'],
 	}
 
 	const handleAmenityChange = event => {
