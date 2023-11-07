@@ -14,6 +14,7 @@ import AllProperty from '../pages/private/dashboard/components/AllProperty';
 import AllBookings from '../pages/private/dashboard/components/AllBookings';
 import AllUsers from '../pages/private/dashboard/components/AllUsers';
 import axios from 'axios'
+import PrivateRoute from './PrivateRoute';
 
 const Router = createBrowserRouter([
 	{
@@ -47,7 +48,7 @@ const Router = createBrowserRouter([
 			},
 			{
 				path: '/dashboard',
-				element: <DashboardPage />,
+				element: (<PrivateRoute><DashboardPage /></PrivateRoute>),
 				children: [
 					{
 						path: '/dashboard/addProperty',
