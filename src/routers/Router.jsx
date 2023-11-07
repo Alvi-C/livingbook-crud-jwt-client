@@ -40,7 +40,6 @@ const Router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <DashboardPage />,
-                errorElement: <Error />,
                 children: [
                     {
                         path: '/dashboard/addProperty',
@@ -57,6 +56,10 @@ const Router = createBrowserRouter([
                     {
                         path: '/dashboard/allUsers',
                         element: <AllUsers/>
+                    },
+                    {
+                        path: '*',
+                        element: <Error/>
                     }
                 ]
 
