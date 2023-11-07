@@ -11,10 +11,10 @@ const TopBanner = () => {
 							Explore LivingBook
 						</h2>
 						<p className='w-full md:w-[31rem] text-[1.3rem] md:text-[1.5rem] font-normal leading-7 text-white'>
-							Discover Hotels, Resorts, and many living facilities around the world.
+							Discover Hotels, Resorts, and many living facilities in your favorite places.
 						</p>
 						<button className='px-4 py-2 bg-lime-500 text-black mt-[2.5rem] rounded-lg'>
-							Start Reading
+							Know more
 						</button>
 					</div>
 				</div>
