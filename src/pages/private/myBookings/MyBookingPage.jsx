@@ -7,7 +7,6 @@ import { Helmet } from 'react-helmet-async'
 const MyBookingPage = () => {
 	const { user } = useContext(AuthContext)
 	const [bookings, setBookings] = useState([])
-	// console.log(bookings)
 
 	const url = `http://localhost:3000/bookings?userEmail=${user.email}`
 
@@ -36,7 +35,10 @@ const MyBookingPage = () => {
 			</h1>
 			<div className='grid grid-cols-1 lg:gap-4 md:grid-cols-2 lg:grid-cols-3'>
 				{bookings.map(booking => (
-					<BookingItemCard key={booking._id} booking={booking} />
+					<BookingItemCard
+						key={booking._id}
+						booking={booking}
+					/>
 				))}
 			</div>
 		</div>
