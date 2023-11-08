@@ -4,13 +4,17 @@ import FeaturedItems from "./components/FeaturedItems";
 import Offer from "./components/Offer";
 import VacationTypes from "./components/VacationTypes";
 import Testimonials from "./components/Testimonials";
+import { Helmet } from 'react-helmet-async'
 
 
 const HomePage = () => {
 	const data = useLoaderData()
-	// console.log(data);
+
     return (
 			<div>
+				<Helmet>
+					<title>LivingBook | Home</title>
+				</Helmet>
 				<TopBanner />
 				<div className='container-size mt-[5rem] lg:mt-[8rem]'>
 					<h1 className='block text-3xl font-bold text-gray-800 sm:text-4xl md:text-5xl lg:text-6xl mb-10 px-3'>
@@ -33,7 +37,7 @@ const HomePage = () => {
 					</div>
 				</div>
 				<div className='container-size mt-[5rem] lg:mt-[8rem] mb-10'>
-					<Testimonials/>
+					<Testimonials />
 				</div>
 			</div>
 		)

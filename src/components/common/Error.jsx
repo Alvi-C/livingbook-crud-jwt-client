@@ -4,9 +4,12 @@ const Error = () => {
 	return (
 		<div className='grid h-screen px-4 bg-white place-content-center'>
 			<div className='text-center'>
-				<h1 className='font-black text-gray-200 text-5xl'>ERROR!!</h1>
+				<img
+					src='https://miro.medium.com/v2/resize:fit:720/1*zE2qnVTJehut7B8P2aMn3A.gif'
+					alt=''
+				/>
 
-				<p className='text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl mt-4'>
+				<p className='text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
 					Oh-no!
 				</p>
 

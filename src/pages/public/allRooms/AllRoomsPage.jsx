@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import RoomsCard from './components/RoomsCard'
 import { useLoaderData } from 'react-router-dom'
 import Slider from './components/Slider'
+import { Helmet } from 'react-helmet-async'
 
 const AllRoomsPage = () => {
 	const [properties, setProperties] = useState([])
@@ -62,7 +63,10 @@ const AllRoomsPage = () => {
 
 	return (
 		<div>
-			<Slider/>
+			<Helmet>
+				<title>LivingBook | Rooms</title>
+			</Helmet>
+			<Slider />
 			<div className='container-size mt-10'>
 				<div className='mb-10'>
 					<div className='flex flex-row gap-4 mt-4'>
