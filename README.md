@@ -1,6 +1,6 @@
 ## MEARN stack `App`:
 
-Live link:
+Live link: https://livingbook-auth.web.app/
 
 ## Key functionalities:
 

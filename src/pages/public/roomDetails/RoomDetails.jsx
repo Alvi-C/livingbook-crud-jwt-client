@@ -53,7 +53,7 @@ const RoomDetails = () => {
 
 		try {
 			const response = await fetch(
-				`http://localhost:3000/bookings?userEmail=${user?.email}&hotelId=${_id}&bookingDate=${value.startDate}`
+				`https://living-book-server.vercel.app/bookings?userEmail=${user?.email}&hotelId=${_id}&bookingDate=${value.startDate}`
 			)
 			const data = await response.json()
 			if (data.length > 0) {
@@ -88,7 +88,7 @@ const RoomDetails = () => {
 	// Function to handle confirmation inside the modal
 	const confirmBooking = async () => {
 		try {
-			const response = await fetch('http://localhost:3000/bookings', {
+			const response = await fetch('https://living-book-server.vercel.app/bookings', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ const RoomDetails = () => {
 	}
 
 	return (
-		<div className='container-size mt-10 min-h-screen'>
+		<div className='container-size mt-10'>
 			{isModalOpen && (
 				<Modal
 					bookingInfo={bookingInfo}

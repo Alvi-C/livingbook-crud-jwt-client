@@ -28,7 +28,7 @@ const Router = createBrowserRouter([
 				path: '/',
 				element: <HomePage />,
 				loader: async () => {
-					const response = await axios.get('http://localhost:3000/featured')
+					const response = await axios.get('https://living-book-server.vercel.app/featured')
 					return response.data
 				},
 			},
@@ -36,7 +36,7 @@ const Router = createBrowserRouter([
 				path: '/rooms',
 				element: <AllRoomsPage />,
 				loader: async () => {
-					const response = await axios.get('http://localhost:3000/properties')
+					const response = await axios.get('https://living-book-server.vercel.app/properties')
 					return response.data
 				},
 			},
@@ -45,7 +45,7 @@ const Router = createBrowserRouter([
 				element: <RoomDetails />,
 				loader: async ({ params }) => {
 					const response = await axios.get(
-						`http://localhost:3000/properties/${params.id}`
+						`https://living-book-server.vercel.app/properties/${params.id}`
 					)
 					return response.data
 				},

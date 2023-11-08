@@ -93,7 +93,7 @@ const AddProperty = () => {
 		}
 
 		axios
-			.post('http://localhost:3000/properties', propertyData)
+			.post('https://living-book-server.vercel.app/properties', propertyData)
 			.then(response => {
 				const data = response.data
 				if (data.insertedId) {

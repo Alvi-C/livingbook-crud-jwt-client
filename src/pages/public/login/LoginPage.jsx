@@ -15,10 +15,10 @@ const LoginPage = () => {
 			.then(result => {
 				const user = result?.user
 				console.log(user)
-
+				navigate(location?.state ? location.state : '/')
 				// Check if the user is already registered or not
 				axios
-					.get('https://localhost:3000/users')
+					.get('https://https:/living-book-server.vercel.app/users')
 					.then(response => {
 						// Find if there is any user registered with this email
 						const isUserRegistered = response.data.find(
@@ -30,7 +30,7 @@ const LoginPage = () => {
 						} else {
 							// Add user to the database
 							axios
-								.post('https://localhost:3000/users', {
+								.post('https://https:/living-book-server.vercel.app/users', {
 									name: user?.displayName,
 									email: user?.email,
 								})

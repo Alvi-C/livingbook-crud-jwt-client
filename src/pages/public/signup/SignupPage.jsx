@@ -39,7 +39,7 @@ const SignupPage = () => {
 					email
 				}
 
-				axios.post('http://localhost:3000/users', userData)
+				axios.post('https://living-book-server.vercel.app/users', userData)
 					.then(response => {
 						if (response.data.insertedId) {
 							toast.success('Account created successfully')

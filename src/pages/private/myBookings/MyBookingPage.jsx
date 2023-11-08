@@ -8,7 +8,7 @@ const MyBookingPage = () => {
 	const { user } = useContext(AuthContext)
 	const [bookings, setBookings] = useState([])
 
-	const url = `http://localhost:3000/bookings?userEmail=${user.email}`
+	const url = `https://living-book-server.vercel.app/bookings?userEmail=${user.email}`
 
 	useEffect(() => {
 		const fetchData = async () => {
