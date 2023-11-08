@@ -9,6 +9,7 @@ import {
 	signInWithPopup,
 } from 'firebase/auth'
 import auth from '../firebase/firebase.config'
+import axios from 'axios'
 
 export const AuthContext = createContext(null)
 
@@ -44,13 +45,33 @@ const AuthProvider = ({ children }) => {
 	// to observe the user and get user's data
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, currentUser => {
+			const userEmail = currentUser?.email || user?.email
+			const loggedUser = { email: userEmail }
 			setUser(currentUser)
 			setLoading(false)
+			// if user exists then issue a token
+			if (currentUser) {
+				axios
+					.post('http://localhost:3000/jwt', loggedUser, {
+						withCredentials: true,
+					})
+					.then(res => {
+						console.log('token-response:', res.data)
+					})
+			} else {
+				axios
+					.post('http://localhost:3000/logout', loggedUser, {
+						withCredentials: true,
+					})
+					.then(res => {
+						console.log('logout-response:', res.data)
+					})
+			}
 		})
 		return () => {
-			unsubscribe()
+			return unsubscribe()
 		}
-	}, [])
+	}, [user?.email])
 
 	const authInfo = {
 		user,
