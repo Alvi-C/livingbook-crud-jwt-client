@@ -43,7 +43,7 @@ const Slider = () => {
 
 	return (
 		<div
-			className='relative w-full bg-fixed h-[30rem]'
+			className='relative w-full h-[30rem]'
 			style={{
 				backgroundImage: `url(${currentImage.img})`,
 				backgroundSize: 'cover',

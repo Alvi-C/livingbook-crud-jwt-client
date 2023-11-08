@@ -25,6 +25,12 @@ const Router = createBrowserRouter([
 			{
 				path: '/',
 				element: <HomePage />,
+				loader: async () => {
+					const response = await axios.get(
+						'http://localhost:3000/featured'
+					)
+					return response.data
+				},
 			},
 			{
 				path: '/rooms',
@@ -38,7 +44,9 @@ const Router = createBrowserRouter([
 				path: '/rooms/details/:id',
 				element: <RoomDetails />,
 				loader: async ({ params }) => {
-					const response = await axios.get(`http://localhost:3000/properties/${params.id}`)
+					const response = await axios.get(
+						`http://localhost:3000/properties/${params.id}`
+					)
 					return response.data
 				},
 			},
@@ -48,7 +56,11 @@ const Router = createBrowserRouter([
 			},
 			{
 				path: '/dashboard',
-				element: (<PrivateRoute><DashboardPage /></PrivateRoute>),
+				element: (
+					<PrivateRoute>
+						<DashboardPage />
+					</PrivateRoute>
+				),
 				children: [
 					{
 						path: '/dashboard/addProperty',
