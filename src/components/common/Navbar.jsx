@@ -117,7 +117,7 @@ const Navbar = () => {
 						onClick={handleMobileMenuToggle}
 						className={
 							mobileMenu
-								? 'absolute md:hidden top-[70px] right-0 bg-lime-200/80 w-full px-4 py-7 flex flex-col items-center justify-center text-center transition duration-500'
+								? 'absolute md:hidden top-[70px] right-0 bg-gray-800/90 text-white w-full px-4 py-7 flex flex-col items-center justify-center text-center transition duration-500'
 								: 'hidden'
 						}
 					>
