@@ -15,6 +15,8 @@ import AllBookings from '../pages/private/dashboard/components/AllBookings';
 import AllUsers from '../pages/private/dashboard/components/AllUsers';
 import axios from 'axios'
 import PrivateRoute from './PrivateRoute';
+import About from '../pages/public/about/About';
+import ContactUs from '../pages/public/contact/ContactUs';
 
 const Router = createBrowserRouter([
 	{
@@ -26,9 +28,7 @@ const Router = createBrowserRouter([
 				path: '/',
 				element: <HomePage />,
 				loader: async () => {
-					const response = await axios.get(
-						'http://localhost:3000/featured'
-					)
+					const response = await axios.get('http://localhost:3000/featured')
 					return response.data
 				},
 			},
@@ -52,7 +52,11 @@ const Router = createBrowserRouter([
 			},
 			{
 				path: '/mybookings',
-				element: <MyBookingPage />,
+				element: (
+					<PrivateRoute>
+						<MyBookingPage />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: '/dashboard',
@@ -91,7 +95,15 @@ const Router = createBrowserRouter([
 			{
 				path: '/signup',
 				element: <SignupPage />,
-			},
+            },
+            {
+                path: '/about',
+                element: <About/>
+            },
+            {
+                path: '/contact',
+                element: <ContactUs/>
+            }
 		],
 	},
 ])
