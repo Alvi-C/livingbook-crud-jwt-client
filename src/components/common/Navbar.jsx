@@ -9,8 +9,9 @@ const Navbar = () => {
 	const [activeScroll, setActiveScroll] = useState(false)
 	const [mobileMenu, setMobileMenu] = useState(false)
 
-	const { user, logOutUser } = useContext(AuthContext)
 
+	const { user, logOutUser } = useContext(AuthContext)
+	// console.log(user?.email);
 	const handleMobileMenuToggle = () => {
 		setMobileMenu(!mobileMenu)
 	}
@@ -34,6 +35,7 @@ const Navbar = () => {
 			window.removeEventListener('scroll', scrollMe)
 		}
 	}, [])
+
 
 	return (
 		<nav
@@ -85,7 +87,8 @@ const Navbar = () => {
 									My Bookings
 								</NavLink>
 							</li>
-							<li>
+							{user?.email === 'admin@livingbook.com' ? (
+								<li>
 								<NavLink
 									to='/dashboard'
 									className={({ isActive }) =>
@@ -95,6 +98,7 @@ const Navbar = () => {
 									Dashboard
 								</NavLink>
 							</li>
+							):null}
 						</ul>
 					</div>
 				</div>
@@ -148,7 +152,8 @@ const Navbar = () => {
 									My Bookings
 								</NavLink>
 							</li>
-							<li className='border-b border-lime-500 py-3'>
+							{user?.email === 'admin@livingbook.com' ? (
+								<li className='border-b border-lime-500 py-3'>
 								<NavLink
 									to='/dashboard'
 									className={({ isActive }) =>
@@ -158,6 +163,7 @@ const Navbar = () => {
 									Dashboard
 								</NavLink>
 							</li>
+							):null}
 						</ul>
 					</div>
 
