@@ -1,7 +1,7 @@
 ## MEARN stack `App`:
 
 Live link firebase: https://livingbook-auth.web.app
-Live link firebase: https://living-book-client.vercel.app
+Live link vercel: https://living-book-client.vercel.app
 
 ## Key functionalities:
 
