@@ -9,7 +9,8 @@ const Offer = () => {
 							Where is your next Destination?
 						</h1>
 						<p className='mt-3 text-lg text-gray-800'>
-							Send your email, we will send you our best offers that fits your destinations.
+							Send your email, we will send you our best offers that fits your
+							destinations.
 						</p>
 
 						<div className='mt-5 lg:mt-8 flex flex-col items-center gap-2 sm:flex-row sm:gap-3'>
@@ -36,7 +37,7 @@ const Offer = () => {
 					<div className='lg:col-span-4 mt-10 lg:mt-0'>
 						<img
 							className='w-full rounded-xl'
-							src='https://i.ibb.co/wWcNHM6/hero-copy.jpg'
+							src='https://i.ibb.co/xs0xMw8/hero-copy-2.jpg'
 							alt='Image Description'
 						/>
 					</div>

@@ -3,7 +3,7 @@
 const ContactUs = () => {
     return (
 			<div className='flex flex-col items-center justify-center mt-32 mb-20'>
-				<h2 className='text-3xl font-extrabold text-gray-900 sm:text-4xl'>
+				<h2 className='text-3xl font-extrabold text-gray-900 sm:text-4xl text-center'>
 					I am Jahedul Huda Chowdhury
 				</h2>
 				<h2 className='text-2xl font-extrabold text-gray-700 sm:text-3xl'>
